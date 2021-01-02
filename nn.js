@@ -65,7 +65,7 @@ class NeuralNetwork {
 
   predict(inputs) {
     return tf.tidy(() => {
-      const xs = tf.tensor2d([inputs]);
+      const xs = tf.tensor([inputs]);
       const ys = this.model.predict(xs);
       const output = ys.dataSync();
       return output;
@@ -77,7 +77,7 @@ class NeuralNetwork {
     const hiddenLayer = tf.layers.dense({
       units: this.hidden_nodes,
       inputShape: [this.input_nodes],
-      activation: "relu"
+      activation: "sigmoid"
     });
     model.add(hiddenLayer);
     const outputLayer = tf.layers.dense({

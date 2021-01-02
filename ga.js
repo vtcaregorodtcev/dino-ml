@@ -5,9 +5,10 @@ const newGeneration = (dinos) => {
   const newDinos = [];
 
   calculateFitness(dinos);
+  const maxDinos = dinos.sort((a, b) => b.fitness - a.fitness)
 
   for (let i = 0; i < TOTAL; i++) {
-    newDinos.push(pickOne(dinos));
+    newDinos.push(pickOne(maxDinos));
   }
 
   console.log(currentGeneration++);
